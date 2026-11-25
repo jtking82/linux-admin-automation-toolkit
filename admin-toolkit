@@ -1,0 +1,15 @@
+#!/bin/bash
+# Linux Admin Toolkit launcher
+TOOLKIT_DIR="$(cd "$(dirname "$0")" && pwd)"
+HEALTH_SCRIPT="$TOOLKIT_DIR/scripts/health_check.sh"
+if [ ! -x "$HEALTH_SCRIPT" ]; then
+    echo "ERROR: Health check script missing or not executable."
+    exit 2
+fi
+echo "Launching Linux Admin Toolkit..."
+echo
+"$HEALTH_SCRIPT"
+EXIT_CODE=$?
+echo
+echo "Toolkit finished with exit code: $EXIT_CODE"
+exit "$EXIT_CODE"
